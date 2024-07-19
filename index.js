@@ -9,6 +9,23 @@ app.get('/', (req, res) => {
     res.render('home')
 })
 
-app.listen(5500, () => {
+app.get('/r/:subreddit', (req,res) => {
+    const {subreddit} = req.params;
+    res.render('subreddit', {subreddit})
+})
+
+app.get('/rand', (req,res) => {
+    const num = Math.floor(Math.random() * 10) + 1
+    res.render('rand',  {num})
+})
+
+app.get('/cats', (req,res) =>{
+   const cats = [
+    'Blue', 'Rocket', 'Monty', 'Stephanie', 'Winston'
+   ] 
+   res.render('cats', {cats})
+})
+
+app.listen(3000, () => {
     console.log('LISTENING ON PORT 3000')
 })
